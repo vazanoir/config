@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 
-# The layout you want in game
-GAME_LAYOUT="us"
-GAME_VARIANT=""
+# Edit those two
+IN_GAME_LAYOUT="us"
+IN_GAME_VARIANT=""
 
-# The layout you use in your os
-DEFAULT_LAYOUT="fr"
-DEFAULT_VARIANT="bepo_afnor"
+DEFAULT_LAYOUT=$(setxkbmap -query | grep layout | awk '{print $2}')
+DEFAULT_VARIANT=$(setxkbmap -query | grep variant | awk '{print $2}')
 
-# If you had multiple layouts, this works:
-# DEFAULT_LAYOUT="us,fr"
-# DEFAULT_LAYOUT=",bepo_afnor"
+echo "$DEFAULT_LAYOUT"
 
-setxkbmap "$GAME_LAYOUT" "$GAME_VARIANT"
+setxkbmap "$IN_GAME_LAYOUT" "$IN_GAME_VARIANT"
 "$@"
 setxkbmap "$DEFAULT_LAYOUT" "$DEFAULT_VARIANT"

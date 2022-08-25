@@ -2,9 +2,6 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-cat $HOME/roadmap
-echo
-
 # general
 set SSD "/mnt/samsung-ssd-840"
 set HDD "/mnt/hdd"
@@ -49,6 +46,9 @@ set -gx PATH "$PNPM_HOME" $PATH
 # bun
 set -Ux BUN_INSTALL "$HOME/.bun"
 fish_add_path "$HOME/.bun/bin"
+
+# docker
+alias start_docker="sudo systemctl start docker"
 
 # cargo
 set PATH $HOME/.cargo/bin $PATH
