@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo pacman -S --needed gperftools || sudo apt install libtcmalloc-minimal4 || sudo dnf install gperftools-libs
+
+# If your game's path differs, then change it (you can also `cd` to the game dir and set the var to a dot, i.e. `.`):
+game=~/".steam/steam/steamapps/common/Counter-Strike Global Offensive"
+
+gamelibdir="$game/bin/linux64"
+# Back up the file unless it was already done (-n option).
+cp -n "$gamelibdir"/libtcmalloc_minimal.so.0{,.orig}
+/bin/cp `whereis libtcmalloc_minimal_debug.so.4|head -n 1|sed -E 's:^.+\s+::'` "$gamelibdir"/libtcmalloc_minimal.so.0
+unset game gamelibdir

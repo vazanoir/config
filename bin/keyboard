@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# The layout you want in game
+GAME_LAYOUT="us"
+GAME_VARIANT=""
+
+# The layout you use in your os
+DEFAULT_LAYOUT="fr"
+DEFAULT_VARIANT="bepo_afnor"
+
+# If you had multiple layouts, this works:
+# DEFAULT_LAYOUT="us,fr"
+# DEFAULT_LAYOUT=",bepo_afnor"
+
+setxkbmap "$GAME_LAYOUT" "$GAME_VARIANT"
+"$@"
+setxkbmap "$DEFAULT_LAYOUT" "$DEFAULT_VARIANT"

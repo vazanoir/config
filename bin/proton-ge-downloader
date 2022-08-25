@@ -1,0 +1,19 @@
+#!/bin/bash
+
+RELEASES=$(curl -s "https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases?per_page=1")
+LATEST_RELEASE=$(echo $RELEASES | jq '.[0]')
+TARBALL_ASSET=$(echo $LATEST_RELEASE | jq '.assets[] | select(.name | endswith("tar.gz"))')
+FILENAME=$(echo $TARBALL_ASSET | jq -r '.name')
+DOWNLOAD_URL=$(echo $TARBALL_ASSET | jq -r '.browser_download_url')
+
+OUTPUT_PARENT_DIR="$HOME/.steam/root/compatibilitytools.d/"
+OUTPUT_DIR=$(basename -s ".tar.gz" "$FILENAME")
+if [ -d "$OUTPUT_PARENT_DIR$OUTPUT_DIR" ];then
+    echo "Proton-GE ($OUTPUT_DIR) already exists"
+    exit 1
+else
+    echo "Found new Proton-GE release ($OUTPUT_DIR). Downloading..."
+    curl -L -o "/tmp/$FILENAME" "$DOWNLOAD_URL"
+    tar -xf "/tmp/$FILENAME" -C "$OUTPUT_PARENT_DIR"
+    rm "/tmp/$FILENAME"
+fi
