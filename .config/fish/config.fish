@@ -5,15 +5,15 @@ end
 cat $HOME/roadmap
 echo
 
-# starship
-starship init fish | source
-
 # general
-alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"                  
 set SSD "/mnt/samsung-ssd-840"
 set HDD "/mnt/hdd"
+
 alias v="nvim"
 alias c="code"
+
+# config
+alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"                  
 
 function update_config
     config add -u && \
@@ -23,6 +23,9 @@ end
 
 # fish
 set FISH_CONFIG "$HOME/.config/fish/config.fish"
+
+# starship
+starship init fish | source
 
 # bin
 fish_add_path "$HOME/bin"
@@ -37,7 +40,7 @@ set ASTROVIM_CONFIG "$HOME/.config/nvim/lua/user/init.lua"
 set fzf_fd_opts --hidden --exclude=.git
 
 # node
-alias setDefaultNodeVersion="set --universal nvm_default_version"
+alias set_default_node="set --universal nvm_default_version"
 
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
@@ -51,12 +54,17 @@ fish_add_path "$HOME/.bun/bin"
 set PATH $HOME/.cargo/bin $PATH
 
 # steam
-set STEAM_COMMON_OS "$HOME/.steam/steam/steamapps/common"
 set -l steamLibraryCommon "SteamLibrary/steamapps/common"
+
+set STEAM_COMMON_OS "$HOME/.steam/steam/steamapps/common"
 set STEAM_COMMON_SSD "$SSD/$steamLibraryCommon"
 set STEAM_COMMON_HDD "$HDD/$steamLibraryCommon"
 
 # doom eternal
 set DOOM_ETERNAL "$STEAM_COMMON_OS/DOOMEternal"
-set -l eternalInjector "EternalModInjectorShell.sh"
-alias injectEternal="cd $DOOM_ETERNAL && bash $eternalInjector && cd -"
+
+function inject_eternal
+    cd $DOOM_ETERNAL && \
+    bash "EternalModInjectorShell.sh" && \
+    cd -
+end
