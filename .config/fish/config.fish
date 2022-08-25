@@ -21,6 +21,13 @@ function update_config
     config push
 end
 
+function init_config
+     git --no-replace-objects clone --bare \
+         git@github.com:vazanoir/config.git $HOME/.cfg
+     config config --local status.showUntrackedFiles no
+     config checkout -f
+end
+
 # fish
 set FISH_CONFIG "$HOME/.config/fish/config.fish"
 
