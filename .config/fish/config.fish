@@ -15,6 +15,12 @@ set HDD "/mnt/hdd"
 alias v="nvim"
 alias c="code"
 
+function update_config
+    config add -u && \
+    config commit -m "Update $(date +"%Y-%m-%d %H:%M") $(uname -s)/$(uname -m)" && \
+    config push
+end
+
 # fish
 set FISH_CONFIG "$HOME/.config/fish/config.fish"
 
