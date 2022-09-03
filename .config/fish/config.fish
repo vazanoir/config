@@ -18,6 +18,9 @@ function update_config
     config push
 end
 
+alias save_dconf="dconf dump / > $HOME/.config/dconf/vazanoir.ini"
+alias load_dconf="dconf load / < $HOME/.config/dconf/vazanoir.ini"
+
 # fish
 set FISH_CONFIG "$HOME/.config/fish/config.fish"
 
@@ -42,6 +45,10 @@ alias set_default_node="set --universal nvm_default_version"
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
+
+#deno
+set DENO_INSTALL "$HOME/.deno"
+fish_add_path "$DENO_INSTALL/bin"
 
 # bun
 set -Ux BUN_INSTALL "$HOME/.bun"
