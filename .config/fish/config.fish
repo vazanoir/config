@@ -15,12 +15,8 @@ alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias save_dconf="dconf dump / > $HOME/.config/dconf/vazanoir.ini"
 alias load_dconf="dconf load / < $HOME/.config/dconf/vazanoir.ini"
 
-alias save_astronvim="cp $HOME/.config/nvim/lua/user/init.lua $HOME/.astronvim/init.lua"
-alias load_astronvim="cp $HOME/.astronvim/init.lua $HOME/.config/nvim/lua/user/init.lua"
-
 function save_config
     save_dconf && \
-    save_astronvim && \
     config add -u && \
     config commit -m "Update $(date +"%Y-%m-%d %H:%M") $(uname -s)/$(uname -m)" && \
     config push
@@ -39,7 +35,7 @@ fish_add_path "$HOME/bin"
 alias wine-ge "$HOME/wine/lutris-GE-Proton7-25-x86_64/bin/wine"
 
 # neovim
-set ASTROVIM_CONFIG "$HOME/.config/nvim/lua/user/init.lua"
+set ASTROVIM_CONFIG "$HOME/.astronvim/init.lua"
 
 # fzf
 set fzf_fd_opts --hidden --exclude=.git
