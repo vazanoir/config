@@ -3,3 +3,5 @@
 	name = Vazanoir
 [init]
 	defaultBranch = main
+[core]
+	editor = nvim
