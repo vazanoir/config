@@ -3,6 +3,9 @@ local config = {
     v = {
       ["J"] = { ":m '>+1<CR>gv=gv" },
       ["K"] = { ":m '<-2<CR>gv=gv" }
+    },
+    n = {
+      ["<leader>rs"] = { "<cmd>lua vim.lsp.buf.rename()<cr>" }
     }
   },
   plugins = {
