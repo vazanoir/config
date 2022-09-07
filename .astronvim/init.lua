@@ -14,6 +14,11 @@ local config = {
     ["show-key"] = {
       show_help = false,
     }
+  },
+  default_theme = {
+    colors = {
+      bg = "#1d1f21"
+    }
   }
 }
 
