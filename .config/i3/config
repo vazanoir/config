@@ -178,7 +178,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+d exec "dmenu_run -nf '#C5C8C6' -nb '#1D1F21' -sb '#81A2BE' -sf '#1D1F21' -fn 'monospace-10' -p 'dmenu prompt &gt;'"
+bindsym $mod+d exec "dmenu_run -nf '#C5C8C6' -nb '#1D1F21' -sb '#81A2BE' -sf '#1D1F21' -fn 'firecode nerd font:bold:11' -p 'dmenu '"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
