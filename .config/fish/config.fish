@@ -5,6 +5,7 @@ end
 # general
 set SSD "/mnt/samsung-ssd-840"
 set HDD "/mnt/hdd"
+set -U fish_greeting
 
 alias v="nvim"
 alias c="code"
