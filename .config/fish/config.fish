@@ -7,17 +7,17 @@ set SSD "/mnt/samsung-ssd-840"
 set HDD "/mnt/hdd"
 set -U fish_greeting
 
-alias v="nvim"
-alias c="code"
+alias v "nvim"
+alias c "code"
 
 # config
-alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"                  
+alias config "git --git-dir=$HOME/.cfg/ --work-tree=$HOME"                  
 
-alias save_dconf="dconf dump / > $HOME/.config/dconf/vazanoir.ini"
-alias load_dconf="dconf load / < $HOME/.config/dconf/vazanoir.ini"
+alias save_dconf "dconf dump / > $HOME/.config/dconf/vazanoir.ini"
+alias load_dconf "dconf load / < $HOME/.config/dconf/vazanoir.ini"
 
-alias save_astronvim="cp $HOME/.config/nvim/lua/user/init.lua $HOME/.astronvim/init.lua"
-alias load_astronvim="cp $HOME/.astronvim/init.lua $HOME/.config/nvim/lua/user/init.lua"
+alias save_astronvim "cp $HOME/.config/nvim/lua/user/init.lua $HOME/.astronvim/init.lua"
+alias load_astronvim "cp $HOME/.astronvim/init.lua $HOME/.config/nvim/lua/user/init.lua"
 
 function save_config
     save_dconf && \
@@ -61,7 +61,7 @@ set -Ux BUN_INSTALL "$HOME/.bun"
 fish_add_path "$HOME/.bun/bin"
 
 # docker
-alias start_docker="sudo systemctl start docker"
+alias start_docker "sudo systemctl start docker"
 
 # cargo
 set PATH $HOME/.cargo/bin $PATH
