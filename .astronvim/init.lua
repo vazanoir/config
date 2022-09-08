@@ -5,7 +5,8 @@ local config = {
       ["K"] = { ":m '<-2<CR>gv=gv" }
     },
     n = {
-      ["<leader>lr"] = { "<cmd>lua vim.lsp.buf.rename()<cr>" }
+      ["<leader>lr"] = { "<cmd>lua vim.lsp.buf.rename()<cr>" },
+      ["<leader>gp"] = { "<cmd>pnpm exec pretty-quick<cr>:e<cr>" },
     }
   },
   plugins = {
@@ -13,6 +14,7 @@ local config = {
       { "editorconfig/editorconfig-vim" },
       ["akinsho/bufferline.nvim"] = { disable = true },
       ["akinsho/toggleterm.nvim"] = { disable = true },
+      ["declancm/cinnamon.nvim"] = { disable = true },
     },
   },
   default_theme = {
