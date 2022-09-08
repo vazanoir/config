@@ -5,7 +5,7 @@ local config = {
       ["K"] = { ":m '<-2<CR>gv=gv" }
     },
     n = {
-      ["<leader>rs"] = { "<cmd>lua vim.lsp.buf.rename()<cr>" }
+      ["<leader>lr"] = { "<cmd>lua vim.lsp.buf.rename()<cr>" }
     }
   },
   plugins = {
@@ -14,9 +14,6 @@ local config = {
       ["akinsho/bufferline.nvim"] = { disable = true },
       ["akinsho/toggleterm.nvim"] = { disable = true },
     },
-    ["show-key"] = {
-      show_help = false,
-    }
   },
   default_theme = {
     colors = {
