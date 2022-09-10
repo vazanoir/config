@@ -215,3 +215,7 @@ default_border pixel 3
 # Commands to run
 exec setxkbmap fr bepo_afnor
 exec feh --bg-fill $HOME/Images/Wallpaper/blobs-l.svg
+exec redshift -l 45:4
+exec steam -silent
+exec --no-startup-id i3-msg 'workspace 4:4; exec telegram_desktop
+exec --no-startup-id i3-msg 'workspace 4:4; exec discord
