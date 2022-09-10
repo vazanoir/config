@@ -27,6 +27,9 @@ end
 set I3 "$HOME/.config/i3/config"
 set I3_STATUS "$HOME/.config/i3status/config"
 
+# alacritty
+set ALACRITTY "$HOME/.config/alacritty/alacritty.yml"
+
 # fish
 set FISH_CONFIG "$HOME/.config/fish/config.fish"
 
