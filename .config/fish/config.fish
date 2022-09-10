@@ -13,19 +13,19 @@ alias c "code"
 # config
 alias config "git --git-dir=$HOME/.cfg/ --work-tree=$HOME"                  
 
-alias save_dconf "dconf dump / > $HOME/.config/dconf/vazanoir.ini"
-alias load_dconf "dconf load / < $HOME/.config/dconf/vazanoir.ini"
-
 alias save_astronvim "cp $HOME/.config/nvim/lua/user/init.lua $HOME/.astronvim/init.lua"
 alias load_astronvim "cp $HOME/.astronvim/init.lua $HOME/.config/nvim/lua/user/init.lua"
 
 function save_config
-    save_dconf && \
     save_astronvim && \
     config add -u && \
     config commit -m "Update $(date +"%Y-%m-%d %H:%M") $(uname -s)/$(uname -m)" && \
     config push
 end
+
+# i3
+set I3 "$HOME/.config/i3/config"
+set I3_STATUS "$HOME/.config/i3status/config"
 
 # fish
 set FISH_CONFIG "$HOME/.config/fish/config.fish"
