@@ -13,14 +13,29 @@ alias c "code"
 # config
 alias config "git --git-dir=$HOME/.cfg/ --work-tree=$HOME"                  
 
-alias save_astronvim "cp $HOME/.config/nvim/lua/user/init.lua $HOME/.astronvim/init.lua"
-alias load_astronvim "cp $HOME/.astronvim/init.lua $HOME/.config/nvim/lua/user/init.lua"
+function save_astronvim
+    mkdir $HOME/.astronvim
+    touch $HOME/.astronvim/init.lua
+    cp $HOME/.config/nvim/lua/user/init.lua $HOME/.astronvim/init.lua
+end
+
+function load_astronvim
+    mkdir $HOME/.config/nvim/lua/user
+    touch $HOME/.config/nvim/lua/user/init.lua
+    cp $HOME/.astronvim/init.lua $HOME/.config/nvim/lua/user/init.lua
+end
 
 function save_config
     save_astronvim && \
     config add -u && \
     config commit -m "Update $(date +"%Y-%m-%d %H:%M") $(uname -s)/$(uname -m)" && \
     config push
+end
+
+function load_config
+    load_astronvim && \
+    config fetch --all && \
+    config reset --hard origin/main
 end
 
 # i3
