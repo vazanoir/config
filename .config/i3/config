@@ -213,9 +213,15 @@ client.background       #EAEAEA
 default_border pixel 3
 
 # Commands to run
+exec --no-startup-id i3-msg 'workspace $ws1'
 exec setxkbmap fr bepo_afnor
 exec feh --bg-fill $HOME/Images/Wallpaper/blobs-l.svg
-exec redshift -l 45:4
+exec redshift -l 45:4 -t 6500:3500
 exec steam -silent
-exec --no-startup-id i3-msg 'workspace 4:4; exec telegram_desktop
-exec --no-startup-id i3-msg 'workspace 4:4; exec discord
+exec discord
+exec telegram-desktop
+exec alacritty
+
+# Open in specific workspaces
+for_window [class="discord"] move to workspace $ws4
+for_window [class="Telegram"] move to workspace $ws4
