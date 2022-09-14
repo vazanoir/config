@@ -2,6 +2,37 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# installation
+function install_basics
+    sudo pacman -S --needed --noconfirm base-devel
+    sudo pacman -S --noconfirm firefox alacritty vim nvim fish \
+    ttf-nerd-fonts-symbols-2048-em-mono starship \
+    neofetch redshift feh tmux ripgrep vlc mpv \
+    docker easyeffects jq fzf fd bat
+
+    mkdir $HOME/Développement
+    cd $HOME/Développement
+
+    # fira code
+    git clone https://aur.archlinux.org/nerd-fonts-fira-code.git
+    cd nerd-fonts-fira-code
+    makepkg -si --noconfirm
+    cd ..
+
+    # httpdirfs | dependency
+    git clone https://aur.archlinux.org/httpdirfs.git
+    cd httpdirfs
+    makepkg -si --noconfirm
+    cd ..
+
+    # microsoft fonts from w11
+    git clone https://aur.archlinux.org/ttf-ms-win11-auto.git
+    cd ttf-ms-win11-auto
+    makepkg -s
+    sudo pacman -U --noconfirm $(ls | string match -r --entire 'ttf-ms-win11-auto-[0-9]')
+    cd ..
+end
+
 # general
 set SSD "/mnt/samsung-ssd-840"
 set HDD "/mnt/hdd"

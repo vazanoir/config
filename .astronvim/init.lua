@@ -6,7 +6,6 @@ local config = {
     },
     n = {
       ["<leader>lr"] = { "<cmd>lua vim.lsp.buf.rename()<cr>" },
-      ["<leader>gp"] = { "<cmd>pnpm exec pretty-quick<cr>:e<cr>" },
     }
   },
   plugins = {
