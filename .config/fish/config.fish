@@ -137,3 +137,7 @@ if status is-login
         exec startx -- -keeptty
     end
 end
+
+if test "$TERM" = "alacritty"
+    tmux
+end
