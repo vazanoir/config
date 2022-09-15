@@ -7,8 +7,8 @@ function install_basics
     sudo pacman -S --needed --noconfirm base-devel
     sudo pacman -S --noconfirm firefox alacritty vim nvim fish \
     ttf-nerd-fonts-symbols-2048-em-mono starship \
-    neofetch redshift feh tmux ripgrep vlc mpv \
-    docker easyeffects jq fzf fd bat
+    neofetch redshift feh tmux ripgrep \
+    docker jq fzf fd bat
 
     mkdir $HOME/Développement
     cd $HOME/Développement
@@ -65,19 +65,12 @@ end
 
 function load_config
     load_astronvim && \
-    config fetch --all && \
-    config reset --hard origin/main
+    config fetch --all
+
+    for i in (seq 1 $argv[1])
+        config reset --hard origin/main $argv[1..-1]
+    end
 end
-
-# i3
-set I3 "$HOME/.config/i3/config"
-set I3_STATUS "$HOME/.config/i3status/config"
-
-# alacritty
-set ALACRITTY "$HOME/.config/alacritty/alacritty.yml"
-
-# fish
-set FISH_CONFIG "$HOME/.config/fish/config.fish"
 
 # starship
 starship init fish | source
@@ -87,9 +80,6 @@ fish_add_path "$HOME/bin"
 
 # wine
 alias wine-ge "$HOME/wine/lutris-GE-Proton7-25-x86_64/bin/wine"
-
-# neovim
-set ASTROVIM_CONFIG "$HOME/.astronvim/init.lua"
 
 # fzf
 set fzf_fd_opts --hidden --exclude=.git
@@ -108,9 +98,6 @@ fish_add_path "$DENO_INSTALL/bin"
 # bun
 set -Ux BUN_INSTALL "$HOME/.bun"
 fish_add_path "$HOME/.bun/bin"
-
-# docker
-alias start_docker "sudo systemctl start docker"
 
 # cargo
 set PATH $HOME/.cargo/bin $PATH
