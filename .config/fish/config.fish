@@ -66,10 +66,7 @@ end
 function load_config
     load_astronvim && \
     config fetch --all
-
-    for i in (seq 1 $argv[1])
-        config reset --hard origin/main $argv[1..-1]
-    end
+    config reset --hard origin/main
 end
 
 # starship
