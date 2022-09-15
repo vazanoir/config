@@ -14,6 +14,7 @@ local config = {
       ["akinsho/bufferline.nvim"] = { disable = true },
       ["akinsho/toggleterm.nvim"] = { disable = true },
       ["declancm/cinnamon.nvim"] = { disable = true },
+      ["windwp/nvim-autopairs"] = { disable = true },
     },
   },
   default_theme = {
