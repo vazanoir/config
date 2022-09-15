@@ -13,7 +13,7 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:firacode nerd font bold 11
+font pango:nunito semibold 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -178,7 +178,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -nf '#C5C8C6' -nb '#1D1F21' -sb '#81A2BE' -sf '#1D1F21' -fn 'firacode nerd font mono:bold:pixelsize=17' -p 'dmenu '"
+bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -nf '#C5C8C6' -nb '#1D1F21' -sb '#81A2BE' -sf '#1D1F21' -fn 'nunito:semibold:pixelsize=16' -p 'dmenu '"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -186,8 +186,9 @@ bar {
         status_command i3status
         position top
         tray_output primary
+        tray_padding 5
         separator_symbol "  "
-        workspace_min_width 40
+        workspace_min_width 10
         colors {
                 background #1D1F21
                 statusline #EAEAEA
