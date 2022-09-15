@@ -217,7 +217,6 @@ exec --no-startup-id i3-msg 'workspace $ws1'
 exec setxkbmap fr bepo_afnor
 exec feh --bg-fill $HOME/Images/Wallpaper/blobs-l.svg
 exec redshift -l 45:4 -t 6500:3500
-exec steam -silent
 exec discord
 exec telegram-desktop
 exec alacritty
@@ -226,4 +225,5 @@ exec easyeffects
 # Open in specific workspaces
 for_window [class="discord"] move to workspace $ws4
 for_window [class="Telegram"] move to workspace $ws4
-for_window [class="easyeffects"] move to workspace $ws0
+for_window [class="Steam"] move to workspace $ws5
+for_window [class="easyeffects"] move to workspace $ws10
