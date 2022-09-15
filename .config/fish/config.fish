@@ -123,5 +123,5 @@ if status is-login
 end
 
 if test "$TERM" = "alacritty"
-    tmux
+    tmux new -s default
 end

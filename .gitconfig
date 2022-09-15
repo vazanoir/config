@@ -5,3 +5,8 @@
 	defaultBranch = main
 [core]
 	editor = nvim
+[grep]
+	lineNumber = true
+	extendRegexp = true
+[alias]
+	fgrep = grep --break --heading --line-number

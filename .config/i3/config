@@ -221,7 +221,9 @@ exec steam -silent
 exec discord
 exec telegram-desktop
 exec alacritty
+exec easyeffects
 
 # Open in specific workspaces
 for_window [class="discord"] move to workspace $ws4
 for_window [class="Telegram"] move to workspace $ws4
+for_window [class="easyeffects"] move to workspace $ws0
