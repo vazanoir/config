@@ -74,6 +74,7 @@ starship init fish | source
 
 # bin
 fish_add_path "$HOME/bin"
+fish_add_path "$HOME/.local/bin"
 
 # wine
 alias wine-ge "$HOME/wine/lutris-GE-Proton7-25-x86_64/bin/wine"
