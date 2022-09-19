@@ -13,20 +13,26 @@ import qualified Data.Map as M
 
 main :: IO ()
 main = xmonad desktopConfig
-  { keys            = myKeys
-	, terminal        = myTerminal
-	, borderWidth     = myBorderWidth
+  { keys = myKeys
+	, terminal = myTerminal
+	, borderWidth = myBorderWidth
+	, normalBorderColor = myNormalBorderColor
+	, focusedBorderColor = myFocusedBorderColor
 	, handleEventHook = mySwallowEventHook
-	, layoutHook      = myLayoutHook
-	, startupHook     = myStartupHook
+	, layoutHook = myLayoutHook
+	, startupHook = myStartupHook
 	}
 
 -- Adapt the default layout to bépo
 myKeys = \c -> bepoKeys c `M.union` keys desktopConfig c
 
+-- Default apps
 myTerminal = "alacritty"
 
+-- Borders
 myBorderWidth = 3
+myNormalBorderColor = "#BCBCBC"
+myFocusedBorderColor = "#6500e9"
 
 -- Launch programs once on startup
 myStartupHook = do
