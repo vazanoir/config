@@ -38,6 +38,7 @@ set SSD "/mnt/samsung-ssd-840"
 set HDD "/mnt/hdd"
 set -U fish_greeting
 
+alias l "exa -la"
 alias v "nvim"
 alias c "code"
 
