@@ -34,6 +34,7 @@ myKeys = \c -> bepoKeys c `M.union` keys desktopConfig c
 
 myAdditionalKeys = 
  [ ("M-f", withFocused toggleFloat)
+ , ("M-s", spawn "flameshot gui")
  ]
 
 -- TERMINAL
