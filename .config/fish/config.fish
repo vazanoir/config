@@ -71,6 +71,8 @@ fish_add_path "$HOME/.bun/bin"
 set PATH $HOME/.cargo/bin $PATH
 
 # steam
+alias steam_flatpak "flatpak run com.valvesoftware.Steam -tcp"
+
 set -l steamLibraryCommon "SteamLibrary/steamapps/common"
 
 set STEAM_COMMON_OS "$HOME/.steam/steam/steamapps/common"

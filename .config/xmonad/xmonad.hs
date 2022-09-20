@@ -4,44 +4,61 @@ import XMonad.Config.Desktop
 import XMonad.Config.Bepo
 
 import XMonad.Layout.Spacing
+import XMonad.Layout.Fullscreen
+import XMonad.Layout.NoBorders
 
 import XMonad.Hooks.WindowSwallowing
+import XMonad.Hooks.ManageDocks
 
 import XMonad.Util.SpawnOnce
+import XMonad.Util.EZConfig
 
 import qualified Data.Map as M
+import qualified XMonad.StackSet as W
 
 main :: IO ()
-main = xmonad desktopConfig
+main = xmonad $ desktopConfig
   { keys = myKeys
-	, terminal = myTerminal
-	, borderWidth = myBorderWidth
-	, normalBorderColor = myNormalBorderColor
-	, focusedBorderColor = myFocusedBorderColor
-	, handleEventHook = mySwallowEventHook
-	, layoutHook = myLayoutHook
-	, startupHook = myStartupHook
-	}
+  , terminal = myTerminal
+  , borderWidth = myBorderWidth
+  , normalBorderColor = myNormalBorderColor
+  , focusedBorderColor = myFocusedBorderColor
+  , handleEventHook = mySwallowEventHook
+  , layoutHook = myLayoutHook
+  , manageHook = myManageHooks
+  }
+  `additionalKeysP` myAdditionalKeys
 
--- Adapt the default layout to bépo
+-- KEYS
 myKeys = \c -> bepoKeys c `M.union` keys desktopConfig c
 
--- Default apps
+myAdditionalKeys = 
+ [ ("M-f", withFocused toggleFloat)
+ ]
+
+-- TERMINAL
 myTerminal = "alacritty"
 
--- Borders
+-- STYLE
 myBorderWidth = 3
 myNormalBorderColor = "#BCBCBC"
 myFocusedBorderColor = "#6500e9"
-
--- Launch programs once on startup
-myStartupHook = do
-  spawnOnce "feh --bg-scale $HOME/Images/moon-satelite.png"
-  spawnOnce "setxkbmap fr bepo_afnor"
-  spawnOnce "picom"
 
 -- Enable terminal to go into hell while starting an app from it
 mySwallowEventHook = swallowEventHook (className =? "Alacritty") (return True)
 
 -- Add gaps arround windows
-myLayoutHook = spacingWithEdge 7 $ Tall 1 (3/100) (1/2) ||| Full
+myLayoutHook = lessBorders OnlyFloat $ avoidStruts $ spacingWithEdge 7 $ Tall 1 (3/100) (1/2) ||| Full
+
+-- MANAGE HOOKS
+myManageHooks = manageDocks
+
+-- CUSTOM
+toggleFloat :: Window -> X ()
+toggleFloat w =
+  windows
+    ( \s ->
+        if M.member w (W.floating s)
+          then W.sink w s
+          else (W.float w (W.RationalRect (0) (0) (1) (1)) s)
+    )
