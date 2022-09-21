@@ -8,7 +8,6 @@ import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 
 import XMonad.Hooks.WindowSwallowing
-import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 
@@ -27,7 +26,6 @@ main = xmonad $ withEasySB mySB defToggleStrutsKey desktopConfig
   , focusedBorderColor = myFocusedBorderColor
   , handleEventHook = mySwallowEventHook
   , layoutHook = myLayoutHook
-  , manageHook = myManageHooks
   }
   `additionalKeysP` myAdditionalKeys
 
@@ -53,10 +51,7 @@ myFocusedBorderColor = "#6500e9"
 mySwallowEventHook = swallowEventHook (className =? "Alacritty") (return True)
 
 -- Add gaps arround windows
-myLayoutHook = lessBorders OnlyFloat $ avoidStruts $ spacingWithEdge 10 $ Tall 1 (3/100) (1/2) ||| Full
-
--- MANAGE HOOKS
-myManageHooks = manageDocks
+myLayoutHook = lessBorders OnlyFloat $ spacingWithEdge 10 $ Tall 1 (3/100) (1/2) ||| Full
 
 -- CUSTOM
 toggleFloat :: Window -> X ()
