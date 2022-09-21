@@ -1,20 +1,16 @@
 Config { font = "xft:Source Sans:size=10:semibold:antialias=true"
-       , additionalFonts = [
-           "xft:Nerd Fonts Symbols Mono:antialias=true"
+       , additionalFonts = 
+       [ "xft:Symbols Nerd Font:size=13:semibold:antialias=true"
        ]
        , bgColor = "#0A0A0A"
        , fgColor = "#BCBCBC"
        , position = Top
-       , commands = [ Run Weather "EGPF" ["-t","<station>: <tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
-                    , Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
-                    , Run Network "eth1" ["-L","0","-H","32","--normal","green","--high","red"] 10
-                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
-                    , Run Memory ["-t","Mem: <usedratio>%"] 10
-                    , Run Swap [] 10
-                    , Run Com "uname" ["-s","-r"] "" 36000
-    		            , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+       , commands = [ Run Weather "LFLY" ["-t","<station>: <tempC>C","-L","18","-H","25","--normal","green","--high","red","--low","lightblue"] 36000
+                    , Run Cpu ["-t", "CPU <total>%"] 10
+    		            , Run DateZone "%H:%M:%S - %a %_d %b %Y" "fr_FR.UTF-8" "Europe/Paris" "date" 10
+    		            , Run DynNetwork ["-t","<fn=1>\xf6d9</fn> <rx> - <fn=1>\xfa51</fn> <tx>", "-S", "true"] 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %cpu% | %memory% * %swap% | %eth0% - %eth1% }{ <fc=#ee9a00>%date%</fc> | %EGPF% | %uname% "
+       , template = " }{ %cpu%      %dynnetwork%      <fc=#F2DD1D>%date%</fc>      %EGPF% "
        }

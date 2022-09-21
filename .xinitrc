@@ -32,6 +32,5 @@ fi
 
 setxkbmap fr bepo_afnor &
 feh --bg-fill $HOME/Images/wallpaper.png &
-xmobar $HOME/.config/xmobar/xmobar.hs &
 picom &
 exec xmonad

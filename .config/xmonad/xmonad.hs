@@ -9,6 +9,8 @@ import XMonad.Layout.NoBorders
 
 import XMonad.Hooks.WindowSwallowing
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.StatusBar
+import XMonad.Hooks.StatusBar.PP
 
 import XMonad.Util.SpawnOnce
 import XMonad.Util.EZConfig
@@ -17,7 +19,7 @@ import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 
 main :: IO ()
-main = xmonad $ desktopConfig
+main = xmonad $ withEasySB mySB defToggleStrutsKey desktopConfig
   { keys = myKeys
   , terminal = myTerminal
   , borderWidth = myBorderWidth
@@ -28,6 +30,8 @@ main = xmonad $ desktopConfig
   , manageHook = myManageHooks
   }
   `additionalKeysP` myAdditionalKeys
+
+mySB = statusBarProp "xmobar" (pure xmobarPP)
 
 -- KEYS
 myKeys = \c -> bepoKeys c `M.union` keys desktopConfig c
