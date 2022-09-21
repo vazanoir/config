@@ -41,7 +41,7 @@ myAdditionalKeys =
 myTerminal = "alacritty"
 
 -- STYLE
-myBorderWidth = 3
+myBorderWidth = 2
 myNormalBorderColor = "#BCBCBC"
 myFocusedBorderColor = "#6500e9"
 
@@ -49,7 +49,7 @@ myFocusedBorderColor = "#6500e9"
 mySwallowEventHook = swallowEventHook (className =? "Alacritty") (return True)
 
 -- Add gaps arround windows
-myLayoutHook = lessBorders OnlyFloat $ avoidStruts $ spacingWithEdge 7 $ Tall 1 (3/100) (1/2) ||| Full
+myLayoutHook = lessBorders OnlyFloat $ avoidStruts $ spacingWithEdge 10 $ Tall 1 (3/100) (1/2) ||| Full
 
 -- MANAGE HOOKS
 myManageHooks = manageDocks
