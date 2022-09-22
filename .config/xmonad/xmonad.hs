@@ -51,7 +51,7 @@ myFocusedBorderColor = "#6500e9"
 mySwallowEventHook = swallowEventHook (className =? "Alacritty") (return True)
 
 -- Add gaps arround windows
-myLayoutHook = lessBorders OnlyFloat $ spacingWithEdge 10 $ Tall 1 (3/100) (1/2) ||| Full
+myLayoutHook = lessBorders OnlyFloat $ spacingWithEdge 8 $ Tall 1 (3/100) (1/2) ||| Full
 
 -- CUSTOM
 toggleFloat :: Window -> X ()
