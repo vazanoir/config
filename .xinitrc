@@ -32,5 +32,7 @@ fi
 
 setxkbmap fr bepo_afnor &
 feh --bg-fill $HOME/Images/wallpaper.png &
+redshift -l 45:5 -t 6000:3500 &
+darkman run &
 picom &
 exec xmonad
