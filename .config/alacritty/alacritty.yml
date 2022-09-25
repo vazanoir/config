@@ -11,14 +11,14 @@ key_bindings:
   - { key: V, mods: Alt, action: ToggleViMode }
   - { key: V, mods: Alt, action: ScrollToBottom }
 colors:
-  name: Ashes (light)
+  name: Ashes (dark)
   author: Chris Kempson
   primary:
-    background: "#f3f4f5"
-    foreground: "#565e65"
+    background: "#1c2023"
+    foreground: "#c7ccd1"
   cursor:
-    text: "#f3f4f5"
-    cursor: "#565e65"
+    text: "#1c2023"
+    cursor: "#c7ccd1"
   normal:
     black: "#1c2023"
     red: "#c7ae95"
@@ -37,4 +37,4 @@ colors:
     magenta: "#c795ae"
     cyan: "#95aec7"
     white: "#f3f4f5"
-theme: Ashes.light
+theme: Ashes.dark

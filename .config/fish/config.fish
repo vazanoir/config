@@ -10,7 +10,9 @@ set -U fish_greeting
 alias v "nvim"
 
 # config
-alias config "git --git-dir=$HOME/.cfg/ --work-tree=$HOME"                  
+function config
+    git --git-dir=$HOME/.cfg/ --work-tree=$HOME $argv
+end
 
 function save_astronvim
     mkdir $HOME/.astronvim
