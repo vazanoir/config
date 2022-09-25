@@ -24,7 +24,7 @@ main = xmonad $ withEasySB mySB defToggleStrutsKey desktopConfig
   , borderWidth = myBorderWidth
   , normalBorderColor = myNormalBorderColor
   , focusedBorderColor = myFocusedBorderColor
-  , handleEventHook = mySwallowEventHook
+  , handleEventHook = myEventHook
   , layoutHook = myLayoutHook
   }
   `additionalKeysP` myAdditionalKeys
@@ -35,27 +35,29 @@ mySB = statusBarProp "xmobar" (pure xmobarPP)
 myKeys = \c -> bepoKeys c `M.union` keys desktopConfig c
 
 myAdditionalKeys = 
- [ ("M-f", withFocused toggleFloat)
+ [ ("M-f", withFocused toggleFullscreenFloat)
  , ("M-s", spawn "flameshot gui")
+ , ("M-p", spawn "rofi -show drun")
  ]
 
 -- TERMINAL
 myTerminal = "alacritty"
 
 -- STYLE
-myBorderWidth = 2
-myNormalBorderColor = "#BCBCBC"
+myBorderWidth = 3
+myNormalBorderColor = "#2B2B2B"
 myFocusedBorderColor = "#6500e9"
 
--- Enable terminal to go into hell while starting an app from it
+-- EVENT HOOK
+myEventHook = mySwallowEventHook
 mySwallowEventHook = swallowEventHook (className =? "Alacritty") (return True)
 
--- Add gaps arround windows
-myLayoutHook = lessBorders OnlyFloat $ spacingWithEdge 8 $ Tall 1 (3/100) (1/2) ||| Full
+-- LAYOUT
+myLayoutHook = smartBorders $ spacingWithEdge 5 $ Tall 1 (3/100) (1/2) ||| Full
 
--- CUSTOM
-toggleFloat :: Window -> X ()
-toggleFloat w =
+-- CUSTOM FUNCTIONS
+toggleFullscreenFloat :: Window -> X ()
+toggleFullscreenFloat w =
   windows
     ( \s ->
         if M.member w (W.floating s)
