@@ -32,6 +32,7 @@ fi
 
 setxkbmap fr bepo_afnor &
 feh --no-fehbg --bg-fill $HOME/Images/wallpaper.png &
+easyeffects &
 redshift -l 45:5 -t 6000:3500 &
 darkman run &
 picom &

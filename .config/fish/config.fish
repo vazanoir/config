@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 # general
-set SSD "/mnt/samsung-ssd-840"
+set SSD "/mnt/ssd"
 set HDD "/mnt/hdd"
 set -U fish_greeting
 
@@ -46,14 +46,8 @@ starship init fish | source
 fish_add_path "$HOME/bin"
 fish_add_path "$HOME/.local/bin"
 
-# wine
-alias wine-ge "$HOME/wine/lutris-GE-Proton7-25-x86_64/bin/wine"
-
 # fzf
 set fzf_fd_opts --hidden --exclude=.git
-
-# node
-alias set_default_node="set --universal nvm_default_version"
 
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
