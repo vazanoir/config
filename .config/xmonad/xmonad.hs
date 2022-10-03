@@ -19,8 +19,9 @@ import qualified XMonad.StackSet as W
 
 main :: IO ()
 main = xmonad 
-  $ fullscreenSupport
-  $ withEasySB mySB defToggleStrutsKey desktopConfig
+  $ fullscreenSupportBorder
+  $ withEasySB mySB defToggleStrutsKey 
+  $ desktopConfig
   { keys = myKeys
   , terminal = myTerminal
   , borderWidth = myBorderWidth
