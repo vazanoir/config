@@ -1,12 +1,18 @@
 add_newline = true
 
-format = """[$directory$git_branch$git_commit$git_status$git_state](bold magenta): """
+format = """[$username$directory$git_branch$git_commit$git_status$git_state\\$](bold white) """
+
+[username]
+format = "[$user](bold green) :: "
+
+[directory]
+format = "[$path](bold cyan) "
 
 [git_branch]
-format = ":: [$branch(:$remote_branch)]($style) "
+format = ": [$branch(:$remote_branch)]($style) "
 
 [git_commit]
-format = ":: [$hash$tag]($style) "
+format = ": [$hash$tag]($style) "
 
 [git_state]
 format = "& [$state $progress_current/$progress_total)]($style) "
