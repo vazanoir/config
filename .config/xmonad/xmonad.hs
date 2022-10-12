@@ -55,7 +55,7 @@ myTerminal = "alacritty"
 -- style
 myBorderWidth = 3
 myNormalBorderColor = "#1C2023"
-myFocusedBorderColor = "#ae95c7"
+myFocusedBorderColor = "#95AEC7"
 
 -- event hook
 myEventHook = mySwallowEventHook
