@@ -11,6 +11,7 @@ import XMonad.Config.Bepo
 import XMonad.Layout.Spacing
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
+import XMonad.Layout.ResizableTile
 
 -- hooks
 import XMonad.Hooks.WindowSwallowing
@@ -20,7 +21,6 @@ import XMonad.Hooks.StatusBar.PP
 -- util
 import XMonad.Util.SpawnOnce
 import XMonad.Util.EZConfig
-import XMonad.Util.SpawnOnce
 
 -- other
 import qualified Data.Map as M
@@ -62,7 +62,7 @@ myEventHook = mySwallowEventHook
 mySwallowEventHook = swallowEventHook (className =? "Alacritty") (return True)
 
 -- layout
-myLayoutHook = smartBorders $ spacingWithEdge 5 $ Tall 1 (3/100) (1/2) ||| Full
+myLayoutHook = smartBorders $ spacingWithEdge 5 $ ResizableTall 1 (3/100) (1/2) [] ||| Full
 
 -- custom functions
 toggleFullscreenFloat :: Window -> X ()
