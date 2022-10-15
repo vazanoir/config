@@ -36,7 +36,7 @@ myStartupHook = do
   spawnOnce "setxkbmap fr bepo_afnor"
   spawnOnce "picom"
   spawnOnce "feh --bg-fill --no-fehbg $HOME/Images/color.png"
-  spawnOnce "/usr/bin/redshift"
+  spawnOnce "redshift"
   spawnOnce "darkman set dark"
 
 -- keys
