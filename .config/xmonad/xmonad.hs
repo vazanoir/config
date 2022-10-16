@@ -4,12 +4,12 @@ import XMonad.Config.Desktop
 import XMonad.Config.Bepo
 
 import XMonad.Layout.Spacing
-import XMonad.Layout.Fullscreen
 import XMonad.Layout.NoBorders
 
 import XMonad.Hooks.WindowSwallowing
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
+import XMonad.Hooks.EwmhDesktops
 
 import XMonad.Util.SpawnOnce
 import XMonad.Util.EZConfig
@@ -18,14 +18,16 @@ import qualified Data.Map as M
 import qualified XMonad.StackSet as W
 
 main :: IO ()
-main = xmonad $ withEasySB mySB defToggleStrutsKey desktopConfig
+main = xmonad 
+  $ ewmhFullscreen
+  $ withEasySB mySB defToggleStrutsKey desktopConfig
   { keys = myKeys
   , terminal = myTerminal
   , borderWidth = myBorderWidth
   , normalBorderColor = myNormalBorderColor
   , focusedBorderColor = myFocusedBorderColor
-  , startupHook = myStartupHook
   , handleEventHook = myEventHook
+  , startupHook = myStartupHook
   , layoutHook = myLayoutHook
   }
   `additionalKeysP` myAdditionalKeys
@@ -54,13 +56,12 @@ myEventHook = mySwallowEventHook
 mySwallowEventHook = swallowEventHook (className =? "Alacritty") (return True)
 
 -- STARTUP HOOK
-myStartupHook :: X ()
 myStartupHook = do
+  startupHook desktopConfig
   spawnOnce "setxkbmap fr bepo_afnor"
   spawnOnce "picom"
   spawnOnce "feh --bg-fill --no-fehbg $HOME/Images/color.png"
   spawnOnce "redshift"
-  spawnOnce "darkman set dark"
 
 -- LAYOUT
 myLayoutHook = smartBorders $ spacingWithEdge 5 $ Tall 1 (3/100) (1/2) ||| Full
