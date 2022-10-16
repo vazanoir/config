@@ -51,7 +51,7 @@ configuration {
 /*	drun-use-desktop-cache: false;*/
 /*	drun-reload-desktop-cache: false;*/
 /*	normalize-match: false;*/
-/*	steal-focus: false;*/
+	steal-focus: true;
 /*	application-fallback-icon: ;*/
 /*	refilter-timeout-limit: 8192;*/
 /*	xserver-i300-workaround: false;*/
@@ -154,8 +154,8 @@ configuration {
   background: #1C2023;
   foreground: #C7CCD1;
   accent: #95AEC7;
-  radius: 3px;
-  space: 5px;
+  radius: 4px;
+  space: 4px;
   border-width: 3px;
 }
 
