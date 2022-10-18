@@ -2,13 +2,11 @@ local function keymap(m, k, v)
 	vim.keymap.set(m, k, v, { silent = true })
 end
 
-local telescope = require('telescope.builtin')
-keymap('n', '<leader>ff', telescope.find_files)
-vim.keymap.set('n', '<leader>fF', telescope.find_files, { silent = true })
--- keymap('n', '<leader>fF', ":Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>")
-keymap('n', '<leader>fg', telescope.live_grep)
-keymap('n', '<leader>fb', telescope.buffers)
-keymap('n', '<leader>fh', telescope.help_tags)
+keymap('n', '<leader>ff', ":Telescope find_files<cr>")
+keymap('n', '<leader>fF', ":Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>")
+keymap('n', '<leader>fg', ":Telescope live_grep<cr>")
+keymap('n', '<leader>fb', ":Telescope buffers<cr>")
+keymap('n', '<leader>fh', ":Telescope help_tags<cr>")
 
 keymap('n', '<leader>pi', "<cmd>PackerInstall<cr>")
 keymap('n', '<leader>pu', "<cmd>PackerUpdate<cr>")
