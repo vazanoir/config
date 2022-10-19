@@ -15,6 +15,7 @@ function config
 end
 
 function save_config
+    pacman -Qqen > $HOME/.config/pacman
     config add -u && \
     config commit -m "Update $(date +"%Y-%m-%d %H:%M") $(uname -s)/$(uname -m)" && \
     config push
@@ -23,6 +24,7 @@ end
 function load_config
     config fetch --all && \
     config reset --hard origin/main
+    pacman -S --needed - < $HOME/.config/pacman
 end
 
 # starship
