@@ -24,6 +24,7 @@ firefox
 fish
 fisher
 flameshot
+flatpak
 flex
 fzf
 gamemode
@@ -38,6 +39,7 @@ groff
 gst-plugin-pipewire
 gzip
 htop
+innoextract
 intel-ucode
 jq
 libpulse
@@ -55,6 +57,7 @@ nvidia
 nvidia-settings
 openssh
 otf-ipafont
+p7zip
 pacman
 patch
 pipewire
@@ -75,6 +78,7 @@ texinfo
 ttf-nerd-fonts-symbols-2048-em
 ttf-roboto-mono
 ttf-sourcecodepro-nerd
+unrar
 unzip
 vim
 wget
