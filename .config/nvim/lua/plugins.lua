@@ -4,6 +4,34 @@ return require('packer').startup(function(use)
 
 	-- PLUGINS
 	use {
+		'VonHeikemen/lsp-zero.nvim',
+		requires = {
+			-- LSP Support
+			{'neovim/nvim-lspconfig'},
+			{'williamboman/mason.nvim'},
+			{'williamboman/mason-lspconfig.nvim'},
+
+			-- Autocompletion
+			{'hrsh7th/nvim-cmp'},
+			{'hrsh7th/cmp-buffer'},
+			{'hrsh7th/cmp-path'},
+			{'saadparwaiz1/cmp_luasnip'},
+			{'hrsh7th/cmp-nvim-lsp'},
+			{'hrsh7th/cmp-nvim-lua'},
+
+			-- Snippets
+			{'L3MON4D3/LuaSnip'},
+			{'rafamadriz/friendly-snippets'},
+		},
+		config = function()
+			local lsp = require('lsp-zero')
+
+			lsp.preset('recommended')
+			lsp.nvim_workspace()
+			lsp.setup()
+		end
+	}
+	use {
 		'nvim-treesitter/nvim-treesitter',
 		config = function()
 			require('nvim-treesitter').setup {
@@ -58,84 +86,8 @@ return require('packer').startup(function(use)
 			require('mason').setup()
 		end
 	}
-	use {
-		'williamboman/mason-lspconfig.nvim',
-		config = function()
-			require('mason-lspconfig').setup()
-		end
-	}
-	use {
-		'neovim/nvim-lspconfig',
-		config = function()
-			local lspconfig = require('lspconfig')
-			local lsp_defaults = lspconfig.util.default_config
-
-			lsp_defaults.capabilities = vim.tbl_deep_extend(
-			'force',
-			lsp_defaults.capabilities,
-			require('cmp_nvim_lsp').default_capabilities()
-			)
-		end
-	}
 	use 'mfussenegger/nvim-lint'
 	use 'gpanders/editorconfig.nvim'
-	use 'hrsh7th/cmp-nvim-lsp'
-	use 'hrsh7th/cmp-buffer'
-	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-cmdline'
-	use {
-		'hrsh7th/nvim-cmp',
-		config = function()
-			local cmp = require'cmp'
-
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-					end,
-				},
-				window = {
-					-- completion = cmp.config.window.bordered(),
-					-- documentation = cmp.config.window.bordered(),
-				},
-				mapping = cmp.mapping.preset.insert({
-					['<C-b>'] = cmp.mapping.scroll_docs(-4),
-					['<C-f>'] = cmp.mapping.scroll_docs(4),
-					['<C-Space>'] = cmp.mapping.complete(),
-					['<C-e>'] = cmp.mapping.abort(),
-					['<CR>'] = cmp.mapping.confirm({ select = true }), 
-				}),
-				sources = cmp.config.sources({
-					{ name = 'nvim_lsp' },
-				}, {
-					{ name = 'buffer' },
-				})
-			})
-
-			cmp.setup.filetype('gitcommit', {
-				sources = cmp.config.sources({
-					{ name = 'cmp_git' },
-				}, {
-					{ name = 'buffer' },
-				})
-			})
-
-			cmp.setup.cmdline({ '/', '?' }, {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = {
-					{ name = 'buffer' }
-				}
-			})
-
-			cmp.setup.cmdline(':', {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({
-					{ name = 'path' }
-				}, {
-					{ name = 'cmdline' }
-				})
-			})
-		end
-	}
 
 	-- THEME	
 	use {
