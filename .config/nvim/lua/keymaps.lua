@@ -14,6 +14,7 @@ keymap('n', '<leader>pc', "<cmd>PackerClear<cr>")
 keymap('n', '<leader>ps', "<cmd>PackerSync<cr>")
 
 keymap('n', '<leader>lr', "<cmd>lua vim.lsp.buf.rename()<cr>")
+keymap('n', '<leader>ld', "<cmd>lua vim.diagnostic.open_float()<cr>")
 
 keymap('v', 'J', ":m '>+1<CR>gv=gv")
 keymap('v', 'K', ":m '<-2<CR>gv=gv")
