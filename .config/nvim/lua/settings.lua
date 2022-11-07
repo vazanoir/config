@@ -11,7 +11,7 @@ o.numberwidth = 2
 o.relativenumber = true
 o.cursorline = true
 
-o.history = 100
+o.history = 1000
 
 o.splitright = true
 o.splitbelow = true
@@ -31,3 +31,5 @@ opt.hlsearch = false
 opt.wrap = true
 
 opt.termguicolors = true
+
+opt.undofile = true
