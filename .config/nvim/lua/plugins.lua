@@ -59,7 +59,7 @@ return require('packer').startup(function(use)
 				show_current_context_start = true,
 			}
 		end
-	}	
+	}
 	use {
 		'darazaki/indent-o-matic',
 		config = function()
@@ -78,16 +78,15 @@ return require('packer').startup(function(use)
 		end
 	}
 	use 'nvim-tree/nvim-web-devicons'
-	use 'nvim-lua/plenary.nvim'
-	use 'nvim-telescope/telescope.nvim'
 	use {
-		'williamboman/mason.nvim',
-		config = function()
-			require('mason').setup()
-		end
+		'nvim-telescope/telescope.nvim',
+		requires = {
+			{'nvim-lua/plenary.nvim'},
+		}
 	}
 	use 'mfussenegger/nvim-lint'
 	use 'gpanders/editorconfig.nvim'
+	use 'tpope/vim-commentary'
 
 	-- THEME	
 	use {
