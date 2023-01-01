@@ -8,6 +8,8 @@ set HDD "/mnt/hdd"
 set -U fish_greeting
 
 alias v "nvim"
+alias bepo "setxkbmap fr bepo_afnor"
+alias us "setxkbmap us"
 
 # config
 function config
